@@ -1,9 +1,13 @@
 import com.codecool.Navigate;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+
+import static org.junit.jupiter.api.Assertions.*;
+
 
 public class TestNavigate {
 
@@ -24,9 +28,17 @@ public class TestNavigate {
     }
 
 
-
     @Test
     public void testBaseURLNavigation(){
+        String onMainPage = navigate.navigateToBaseURL();
+        assertEquals("Input Forms",onMainPage);
+
+    }
+
+    @Test
+    public void getSimpleFormDemos(){
         navigate.navigateToBaseURL();
+        String onSingleInputFieldsPage = navigate.navigateToAllExamples();
+        assertEquals("Single Input Field", onSingleInputFieldsPage);
     }
 }
