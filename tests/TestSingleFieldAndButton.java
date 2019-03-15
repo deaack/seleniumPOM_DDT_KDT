@@ -33,7 +33,7 @@ public class TestSingleFieldAndButton {
     @Test
     public void testSingleInputField(){
         navigate.navigateToBaseURL();
-        navigate.navigateToSimpleInputForm();
+        navigate.navigateToInputForms();
         String result = singleFieldAndButton.enterMessageIntoSingleInputForm(inputMessage);
         assertEquals(inputMessage,result);
     }

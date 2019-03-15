@@ -1,4 +1,5 @@
 import com.codecool.Navigate;
+import com.codecool.TwoInputFields;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -8,17 +9,22 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-public class TestNavigate {
-
+public class TestTwoInputFields {
     Navigate navigate;
     WebDriver driver;
     String baseURL;
+    TwoInputFields twoInputFields;
+    int sum1;
+    int sum2;
 
     @BeforeEach
     public void setUp(){
         driver = new ChromeDriver();
         baseURL = "https://www.seleniumeasy.com/test/";
         navigate = new Navigate(driver,baseURL);
+        twoInputFields = new TwoInputFields(driver);
+        sum1 = 23;
+        sum2 = 56563747;
     }
 
     @AfterEach
@@ -26,18 +32,12 @@ public class TestNavigate {
         driver.close();
     }
 
-
     @Test
-    public void testBaseURLNavigation(){
-        String onMainPage = navigate.navigateToBaseURL();
-        assertEquals("Input Forms",onMainPage);
-
-    }
-
-    @Test
-    public void getSimpleFormDemos(){
+    public void testTwoInputFields(){
         navigate.navigateToBaseURL();
-        String onSingleInputFieldsPage = navigate.navigateToInputForms();
-        assertEquals("Single Input Field", onSingleInputFieldsPage);
+        navigate.navigateToInputForms();
+        int expectedResult = sum1 + sum2;
+        int result = twoInputFields.getTotalOfTwoInputFields(sum1,sum2);
+        assertEquals(expectedResult, result);
     }
 }
