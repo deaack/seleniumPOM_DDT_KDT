@@ -1,4 +1,5 @@
 import com.codecool.Navigate;
+import com.codecool.SingleFieldAndButton;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -8,17 +9,20 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-public class TestNavigate {
-
+public class TestSingleFieldAndButton {
     Navigate navigate;
     WebDriver driver;
     String baseURL;
+    SingleFieldAndButton singleFieldAndButton;
+    String inputMessage;
 
     @BeforeEach
     public void setUp(){
         driver = new ChromeDriver();
         baseURL = "https://www.seleniumeasy.com/test/";
         navigate = new Navigate(driver,baseURL);
+        singleFieldAndButton = new SingleFieldAndButton(driver);
+        inputMessage = "Hello Page Object Model!";
     }
 
     @AfterEach
@@ -26,18 +30,11 @@ public class TestNavigate {
         driver.close();
     }
 
-
     @Test
-    public void testBaseURLNavigation(){
-        String onMainPage = navigate.navigateToBaseURL();
-        assertEquals("Input Forms",onMainPage);
-
-    }
-
-    @Test
-    public void getSimpleFormDemos(){
+    public void testSingleInputField(){
         navigate.navigateToBaseURL();
-        String onSingleInputFieldsPage = navigate.navigateToSimpleInputForm();
-        assertEquals("Single Input Field", onSingleInputFieldsPage);
+        navigate.navigateToSimpleInputForm();
+        String result = singleFieldAndButton.enterMessageIntoSingleInputForm(inputMessage);
+        assertEquals(inputMessage,result);
     }
 }

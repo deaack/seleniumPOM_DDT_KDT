@@ -25,7 +25,7 @@ public class Navigate {
         return element.getText();
     }
 
-    public String navigateToAllExamples(){
+    public String navigateToSimpleInputForm(){
         driver.findElement(By.xpath("//*[@id=\"navbar-brand-centered\"]/ul[1]/li[1]/a")).click();
         driver.findElement(By.xpath("//*[@id=\"navbar-brand-centered\"]/ul[1]/li[1]/ul/li[1]/a")).click();
         WebDriverWait wait = new WebDriverWait(driver, 5);
