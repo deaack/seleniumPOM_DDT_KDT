@@ -1,5 +1,6 @@
-import com.codecool.Navigate;
-import com.codecool.TwoInputFields;
+import com.codecool.seleniumeasytests.bencedeak.Navigate;
+import com.codecool.seleniumeasytests.bencedeak.TwoInputFields;
+import com.codecool.seleniumeasytests.bencedeak.excelreader.ExcelReader;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,8 +15,8 @@ public class TestTwoInputFields {
     WebDriver driver;
     String baseURL;
     TwoInputFields twoInputFields;
-    int sum1;
-    int sum2;
+    ExcelReader excelReader;
+    double [] values;
 
     @BeforeEach
     public void setUp(){
@@ -23,8 +24,18 @@ public class TestTwoInputFields {
         baseURL = "https://www.seleniumeasy.com/test/";
         navigate = new Navigate(driver,baseURL);
         twoInputFields = new TwoInputFields(driver);
-        sum1 = 23;
-        sum2 = 56563747;
+        excelReader = new ExcelReader();
+        try {
+            excelReader.initFileInputStream();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            excelReader.initWorkbook();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        values = excelReader.getValues();
     }
 
     @AfterEach
@@ -36,8 +47,8 @@ public class TestTwoInputFields {
     public void testTwoInputFields(){
         navigate.navigateToBaseURL();
         navigate.navigateToInputForms();
-        int expectedResult = sum1 + sum2;
-        int result = twoInputFields.getTotalOfTwoInputFields(sum1,sum2);
+        double expectedResult = values[0] + values[1];
+        double result = twoInputFields.getTotalOfTwoInputFields(values[0],values[1]);
         assertEquals(expectedResult, result);
     }
 }

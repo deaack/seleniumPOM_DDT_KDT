@@ -1,5 +1,5 @@
-import com.codecool.Navigate;
-import com.codecool.SingleFieldAndButton;
+import com.codecool.seleniumeasytests.bencedeak.Navigate;
+import com.codecool.seleniumeasytests.bencedeak.SingleFieldAndButton;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

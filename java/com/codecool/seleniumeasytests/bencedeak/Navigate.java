@@ -1,4 +1,4 @@
-package com.codecool;
+package com.codecool.seleniumeasytests.bencedeak;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
