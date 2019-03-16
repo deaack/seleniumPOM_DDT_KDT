@@ -35,7 +35,7 @@ public class TestTwoInputFields {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        values = excelReader.getValues();
+        values = excelReader.readValuesForTwoInputFields();
     }
 
     @AfterEach

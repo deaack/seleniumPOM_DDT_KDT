@@ -1,5 +1,6 @@
 import com.codecool.seleniumeasytests.bencedeak.Navigate;
 import com.codecool.seleniumeasytests.bencedeak.SingleFieldAndButton;
+import com.codecool.seleniumeasytests.bencedeak.excelreader.ExcelReader;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,6 +16,7 @@ public class TestSingleFieldAndButton {
     String baseURL;
     SingleFieldAndButton singleFieldAndButton;
     String inputMessage;
+    ExcelReader excelReader;
 
     @BeforeEach
     public void setUp(){
@@ -22,7 +24,18 @@ public class TestSingleFieldAndButton {
         baseURL = "https://www.seleniumeasy.com/test/";
         navigate = new Navigate(driver,baseURL);
         singleFieldAndButton = new SingleFieldAndButton(driver);
-        inputMessage = "Hello Page Object Model!";
+        excelReader = new ExcelReader();
+        try {
+            excelReader.initFileInputStream();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            excelReader.initWorkbook();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        inputMessage = excelReader.readMessageForSingleInputField();
     }
 
     @AfterEach
