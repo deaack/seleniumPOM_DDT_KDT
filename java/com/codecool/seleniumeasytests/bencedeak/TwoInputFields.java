@@ -7,7 +7,6 @@ import org.openqa.selenium.WebDriver;
 public class TwoInputFields {
 
     WebDriver driver;
-    ExcelReader excelReader;
 
     public TwoInputFields(WebDriver driver) {
         this.driver = driver;

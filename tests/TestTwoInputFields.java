@@ -11,8 +11,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 public class TestTwoInputFields {
-    Navigate navigate;
+
     WebDriver driver;
+    Navigate navigate;
     String baseURL;
     TwoInputFields twoInputFields;
     ExcelReader excelReader;
@@ -21,8 +22,8 @@ public class TestTwoInputFields {
     @BeforeEach
     public void setUp(){
         driver = new ChromeDriver();
-        baseURL = "https://www.seleniumeasy.com/test/";
         navigate = new Navigate(driver,baseURL);
+        baseURL = "https://www.seleniumeasy.com/test/";
         twoInputFields = new TwoInputFields(driver);
         excelReader = new ExcelReader();
         try {
